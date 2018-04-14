@@ -39,6 +39,7 @@ import org.apereo.portal.url.UrlState;
 import org.apereo.portal.url.UrlType;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 /** */
@@ -50,6 +51,13 @@ public class JacksonPortalEventTest {
         final ObjectMapperFactoryBean omfb = new ObjectMapperFactoryBean();
         omfb.afterPropertiesSet();
         mapper = omfb.getObject();
+    }
+
+    @Test
+    public void testSystemPerson() {
+        SystemPerson person = (SystemPerson) SystemPerson.INSTANCE;
+	assertEquals(person.getID(), 1);
+	assertNull(person.getAttribute("key"));
     }
 
     @Test
